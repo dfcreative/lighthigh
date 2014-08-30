@@ -10,8 +10,7 @@ var doc = document, win = window, root = document.documentElement;
 
 
 /**
- * Create a highlighter
- *
+ * Create a highlighter.
  * @param   {Element}   el   An element to take as a highlight. It can contain anything inside.
  */
 
@@ -29,10 +28,8 @@ var proto = Lighthigh.prototype;
 
 /**
  * Fade in and move highlight to the target.
- *
- * @param    {(Array|Node)}   target   A target area or element to highlight
- *
- * @return   {Lighthigh}   Chain of calls
+ * @param    {(Array|Node)}   target   A target area or element to highlight.
+ * @return   {Lighthigh}   Chain of calls.
  */
 
 proto['to'] = function (target){
@@ -50,6 +47,17 @@ proto['to'] = function (target){
 			this.el.classList.remove(name + '-fixed');
 		}
 
+		//↓↓↓
+		//TODO: calc absolute offset position
+		//TODO: place to the body with calc offset position
+		//TODO: calc target element offset position
+		//TODO: move to the target element offset position
+		//TODO: remove from DOM when anim ends
+		//TODO: place to the target parent
+		//TODO: clone target offset position within parent (make dependent on target holder position)
+		//TODO: unhide from the DOM
+		//↑↑↑
+
 		//place to the target parent
 		//because parent can be displaced, so highlight should be positioned similarly to the target
 		var parent = target.parentNode instanceof Element && target.parentNode !== root ? target.parentNode : document.body;
@@ -59,6 +67,7 @@ proto['to'] = function (target){
 	//unhide element
 	if (this.el.hasAttribute('hidden')) {
 		this.el.removeAttribute('hidden');
+		//TODO: make soft fade-in
 	}
 
 	//set new position
@@ -70,10 +79,8 @@ proto['to'] = function (target){
 
 /**
  * Return bounding client rectangle of any target passed.
- *
- * @param    {(Node|Array|window|document|Objcet)}   target   A target
- *
- * @return   {Array}   Rectangle array: `[left,top,right,bottom]`
+ * @param    {(Node|Array|window|document|Objcet)}   target   A target.
+ * @return   {Array}   Rectangle array: `[left,top,right,bottom]`.
  */
 
 function getRect(target){
@@ -110,28 +117,26 @@ function getRect(target){
 
 
 /**
- * Fade out & hide
- *
- * @return   {Lighthigh}   Chain of calls
+ * Fade out & hide.
+ * @return   {Lighthigh}   Chain of calls.
  */
 
 proto['off'] = function (){
+	//TODO: make soft fade-out
 	this.el.setAttribute('hidden', true);
 
 	return this;
 };
 
 
-/** @True {string} CSS transform property name */
+/** @True {string} CSS transform property name. */
 var transform = '-webkit-transform';
 
 
 /**
- * Move highlighter to the rectangle
- *
- * @param    {Array}   rect   4-dimension array [left,top,right,bottom]
- *
- * @return   {Lighthigh}   Chain of calls
+ * Move highlighter to the rectangle.
+ * @param    {Array}   rect   4-dimension array [left,top,right,bottom].
+ * @return   {Lighthigh}   Chain of calls.
  *
  */
 
@@ -149,9 +154,8 @@ proto.moveTo = function (rect) {
 
 
 /**
- * Mimic target element position, if such
- *
- * @return   {Lighthigh}   Chaining
+ * Mimic target element position, if such.
+ * @return   {Lighthigh}   Chaining.
  */
 
 proto.update = function () {
