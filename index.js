@@ -11,6 +11,7 @@ var doc = document, win = window, root = document.documentElement;
 
 /**
  * Create a highlighter.
+ *
  * @param   {Element}   el   An element to take as a highlight. It can contain anything inside.
  */
 
@@ -28,6 +29,7 @@ var proto = Lighthigh.prototype;
 
 /**
  * Fade in and move highlight to the target.
+ *
  * @param    {(Array|Node)}   target   A target area or element to highlight.
  * @return   {Lighthigh}   Chain of calls.
  */
@@ -79,6 +81,7 @@ proto['to'] = function (target){
 
 /**
  * Return bounding client rectangle of any target passed.
+ *
  * @param    {(Node|Array|window|document|Objcet)}   target   A target.
  * @return   {Array}   Rectangle array: `[left,top,right,bottom]`.
  */
@@ -118,6 +121,7 @@ function getRect(target){
 
 /**
  * Fade out & hide.
+ *
  * @return   {Lighthigh}   Chain of calls.
  */
 
@@ -135,6 +139,7 @@ var transform = '-webkit-transform';
 
 /**
  * Move highlighter to the rectangle.
+ *
  * @param    {Array}   rect   4-dimension array [left,top,right,bottom].
  * @return   {Lighthigh}   Chain of calls.
  *
@@ -155,6 +160,7 @@ proto.moveTo = function (rect) {
 
 /**
  * Mimic target element position, if such.
+ *
  * @return   {Lighthigh}   Chaining.
  */
 
