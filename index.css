@@ -1,0 +1,14 @@
+.lighthigh {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2147483647;
+	background: rgba(0, 92, 255, 0.28);
+	box-shadow: 0 0 0 2px rgba(0, 112, 255, 0.44);
+	-webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
+	pointer-events: none;
+}
+.lighthigh-fixed{
+	position: fixed;
+}
