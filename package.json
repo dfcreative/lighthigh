@@ -1,6 +1,6 @@
 {
   "name": "lighthigh",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Highlight any node/area in the document",
   "main": "index.js",
   "directories": {
