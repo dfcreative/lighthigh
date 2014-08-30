@@ -42,15 +42,17 @@ proto['to'] = function (target){
 	if (target instanceof Element) {
 		//copy target position
 		var style = getComputedStyle(target);
-		if (style.position === 'fixed' && !this.el.classList.contains(name + '-fixed')) {
-			this.el.classList.add(name + '-fixed');
+		if (style.position === 'fixed') {
+			if (!this.el.classList.contains(name + '-fixed')) {
+				this.el.classList.add(name + '-fixed');
+			}
 		} else if (this.el.classList.contains(name + '-fixed')) {
 			this.el.classList.remove(name + '-fixed');
 		}
 
 		//place to the target parent
+		//because parent can be displaced, so highlight should be positioned similarly to the target
 		var parent = target.parentNode instanceof Element && target.parentNode !== root ? target.parentNode : document.body;
-
 		parent.appendChild(this.el);
 	}
 
@@ -77,9 +79,9 @@ proto['to'] = function (target){
 function getRect(target){
 	var rect;
 
-	if (target instanceof Node){
-		var margins = getMargins(target);
-		rect = [target.offsetLeft, target.offsetTop, target.offsetLeft + target.offsetWidth, target.offsetTop + target.offsetHeight];
+	if (target instanceof Node && target !== doc){
+		var oRect = css.offsets(target);
+		rect = [oRect.left, oRect.top, oRect.right, oRect.bottom];
 	}
 
 	else if (target === win){

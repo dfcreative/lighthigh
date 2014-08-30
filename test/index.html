@@ -1,18 +1,54 @@
 <!doctype html>
 
 <script src="../node_modules/require-stub/index.js"></script>
+<script src="../node_modules/mucss/index.js"></script>
 <script src='../index.js' data-module-name="lighthigh"></script>
+
 <script>
-var Lighthigh = require('lighthigh');
-var lh = new Lighthigh();
-document.addEventListener('click', function(e){
-	lh.to(e.target);
-});
+	var Lighthigh = require('lighthigh');
+
+	var clh = new Lighthigh();
+
+	var $mlh = document.createElement('div');
+	$mlh.classList.add('no-animation');
+	$mlh.classList.add('mover');
+	var mlh = new Lighthigh($mlh);
+
+	var ii, blocked = false;
+
+	document.addEventListener('mousemove', function(e){
+		update(e.target, mlh);
+	});
+	document.addEventListener('click', function(e){
+		update(e.target, clh);
+	});
+
+	function update (el, lh){
+		//get element under the cursor
+		// var el = getElement();
+		if (el === document.body || el === document.documentElement) return;
+		if (blocked) return;
+
+		lh.to(el);
+		blocked = true;
+
+		setTimeout(function(){
+			lh.to(el);
+			blocked = false;
+		}, 2);
+	}
 </script>
 
 <link rel="stylesheet" type="text/css" href="../index.css"/>
 
 <style type="text/css">
+	.no-animation{
+		transition: none;
+	}
+	.mover{
+		background: rgba(235, 158, 78, 0.15);
+		box-shadow: inset 0 0 0 2px rgba(245, 133, 0, 0.05);
+	}
 	nav{
 		position: fixed;
 		width: 200px;

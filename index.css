@@ -3,11 +3,15 @@
 	top: 0;
 	left: 0;
 	z-index: 2147483647;
-	background: rgba(0, 92, 255, 0.28);
-	box-shadow: 0 0 0 2px rgba(0, 112, 255, 0.44);
+	background: rgba(74, 158, 235, 0.28);
+	box-shadow: inset 0 0 0 2px rgba(0, 123, 245, 0.1);
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
 	pointer-events: none;
+	-webkit-transition: .15s ease-in -webkit-transform, .25s ease-in-out width, .25s ease-in-out height;
+	transition: .15s ease-in transform, .25s ease-in-out width, .25s ease-in-out height;
 }
 .lighthigh-fixed{
 	position: fixed;
