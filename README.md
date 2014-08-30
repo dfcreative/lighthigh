@@ -1,19 +1,18 @@
 Highlight any node on the page, primarily elements and text.
 
 ```
-npm install select
+npm install lightligh
 ```
 
 ```
-require('select');
+var LightHigh = require('lightligh');
 var item = document.querySelector('.item');
 
-select(item);
-//select next by tab index
-select.next();
+var lighthigh = new LightHigh;
 
-//OR
-select.animate = false;
-select.type = 'transform';
-select.target = item;
+//highlight item
+lighthigh.on(item);
+
+//fade out
+lighthigh.off();
 ```
