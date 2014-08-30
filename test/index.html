@@ -20,14 +20,14 @@
 		update(e.target, mlh);
 	});
 	document.addEventListener('click', function(e){
-		update(e.target, clh);
+		update(e.target, clh) && (clh.el.innerHTML = e.target.tagName.toLowerCase());
 	});
 
 	function update (el, lh){
 		//get element under the cursor
 		// var el = getElement();
-		if (el === document.body || el === document.documentElement) return;
-		if (blocked) return;
+		if (el === document.body || el === document.documentElement) return false;
+		if (blocked) return false;
 
 		lh.to(el);
 		blocked = true;
@@ -36,12 +36,20 @@
 			lh.to(el);
 			blocked = false;
 		}, 2);
+
+		return true;
 	}
 </script>
 
 <link rel="stylesheet" type="text/css" href="../index.css"/>
 
 <style type="text/css">
+	.lighthigh{
+		text-align: right;
+		font-size: 11px;
+		text-transform: lowercase;
+		padding: 0px 2px;
+	}
 	.no-animation{
 		transition: none;
 	}

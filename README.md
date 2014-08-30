@@ -1,10 +1,10 @@
 Highlight any node on the page, primarily elements and text.
 
 ```
-npm install lighthigh
+$ npm install lighthigh
 ```
 
-```
+```js
 var LightHigh = require('lighthigh');
 var item = document.querySelector('.item');
 

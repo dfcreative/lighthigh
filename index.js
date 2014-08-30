@@ -53,7 +53,7 @@ proto['to'] = function (target){
 		//place to the target parent
 		//because parent can be displaced, so highlight should be positioned similarly to the target
 		var parent = target.parentNode instanceof Element && target.parentNode !== root ? target.parentNode : document.body;
-		parent.appendChild(this.el);
+		if (this.el.parentNode !== parent) parent.appendChild(this.el);
 	}
 
 	//unhide element
@@ -136,9 +136,24 @@ var transform = '-webkit-transform';
  */
 
 proto.moveTo = function (rect) {
-	this.el.style[transform] = 'translate3d(' + rect[0] + 'px, ' + rect[1] + 'px, 0)';
-	this.el.style.width = rect[2] - rect[0] + 'px';
-	this.el.style.height = rect[3] - rect[1] + 'px';
+	var paddings = css.paddings(this.el);
+
+	css(this.el, {
+		'transform': 'translate3d(' + (rect[0] - paddings.left) + 'px, ' + (rect[1] - paddings.top) + 'px, 0)',
+		'width': (rect[2] - rect[0]) + 'px',
+		'height': (rect[3] - rect[1]) + 'px'
+	});
 
 	return this;
+};
+
+
+/**
+ * Mimic target element position, if such
+ *
+ * @return   {Lighthigh}   Chaining
+ */
+
+proto.update = function () {
+	//TODO
 };
