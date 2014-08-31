@@ -40,7 +40,7 @@ proto['to'] = function (target){
 
 	if (target instanceof Element) {
 		//copy target position
-		var style = getComputedStyle(target);
+		var style = win.getComputedStyle(target);
 		if (style.position === 'fixed') {
 			if (!this.el.classList.contains(name + '-fixed')) {
 				this.el.classList.add(name + '-fixed');
